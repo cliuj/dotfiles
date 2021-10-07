@@ -111,6 +111,7 @@
       ];
       extraConfig = ''
       lua << EOF
+      local home = os.getenv("HOME")
       vim.defer_fn(function()
         vim.cmd ([[
           packadd vim-nix
@@ -133,7 +134,7 @@
           doautocmd BufRead
         ]])
         vim.defer_fn(function()
-          dofile("/home/cliuj/.config/nvim/lua/settings.lua")
+          dofile(home .. "/.config/nvim/lua/settings.lua")
         end, 15)
       end, 0)
       EOF
