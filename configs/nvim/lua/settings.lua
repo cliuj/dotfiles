@@ -64,11 +64,13 @@ map('n', '<S-j>', '}', { noremap = true })
 map('n', '<S-k>', '{', { noremap = true })
 map('n', '<space>', '<C-W>', { noremap = true })
 map('n', ';', ':', { noremap = true })
-map('n', '<S-t>', ':sp | resize 20 | terminal <CR>', { noremap = true })
+map('n', '<S-t>', ':sp | resize 30 | set nonumber | terminal <CR>', { noremap = true })
 map('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 
 vim.cmd([[
-  filetype plugin on
+  silent! colorscheme dark-meadow
+  setglobal tabstop=4
+  setglobal shiftwidth=4
   
   " Highlight colors for {} [] ()
   hi MatchParen cterm=NONE ctermfg=NONE ctermfg=000000
@@ -80,4 +82,6 @@ vim.cmd([[
   nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
   \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
   \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+  filetype plugin on
 ]])

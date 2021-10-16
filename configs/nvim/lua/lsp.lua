@@ -1,5 +1,5 @@
 local lspconfig = require('lspconfig')
-local servers = { 'gopls', 'rnix' }
+local servers = { 'gopls', 'rnix', 'hls'}
 for _, server in ipairs(servers) do
     lspconfig[server].setup {}
 end
