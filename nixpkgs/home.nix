@@ -77,7 +77,6 @@
       local home = os.getenv("HOME")
       vim.defer_fn(function()
         vim.cmd ([[
-          colorscheme dark-meadow
           packadd vim-nix
           packadd galaxyline-nvim
           packadd nvim-web-devicons
