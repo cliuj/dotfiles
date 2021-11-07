@@ -16,6 +16,8 @@
       mpv
       youtube-dl
       maim
+      picom
+      xmobar
 
       # LSP
       rnix-lsp
@@ -36,13 +38,18 @@
       enable = true;
       shellAbbrs = {
         hms = "home-manager switch";
+        v = "nvim";
+        xrr = "xmonad --recompile && xmonad --restart";
+        xbc = "vim ~/.config/xmobar/xmobarrc";
+        xmc = "vim ~/.xmonad/xmonad.hs";
+        nvc = "vim ~/.config/nvim/lua/settings.lua";
       };
       shellAliases = {
-        v = "nvim";
         vim = "nvim";
         vol = "alsamixer";
         home = "vim ~/.config/nixpkgs/home.nix";
-        configs = "cd ~/dotfiles/configs";
+        suslock = "slock systemctl suspend -i";
+        lock = "slock";
       };
     };
     neovim = {
