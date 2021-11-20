@@ -18,6 +18,7 @@
       maim
       picom
       xmobar
+      tmux
 
       # LSP
       rnix-lsp
@@ -43,14 +44,59 @@
         xbc = "vim ~/.config/xmobar/xmobarrc";
         xmc = "vim ~/.xmonad/xmonad.hs";
         nvc = "vim ~/.config/nvim/lua/settings.lua";
+        tl = "tmux list-sessions";
+        ta = "tmux attach";
       };
       shellAliases = {
+        t = "tmux";
         vim = "nvim";
         vol = "alsamixer";
         home = "vim ~/.config/nixpkgs/home.nix";
         suslock = "slock systemctl suspend -i";
         lock = "slock";
       };
+    };
+   tmux = {
+      enable = true;
+      baseIndex = 1;
+      clock24 = true;
+      historyLimit = 5000;
+      keyMode = "vi";
+      newSession = true;
+      shortcut = "space";
+      extraConfig = ''
+      # Set the prefix to Ctrl-Space
+      unbind C-b
+      set -g prefix C-Space
+      bind a send-prefix
+
+      set -g mouse on
+      # Set vim-keys for copy and pasting
+      bind p paste-buffer
+      bind-key -T copy-mode-vi v send-keys -X begin-selection
+      bind-key -T copy-mode-vi y send-keys -X copy-selection
+      bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
+
+      # Set vim-keys for pane switching
+      bind -n C-h select-pane -L
+      bind -n C-j select-pane -D
+      bind -n C-k select-pane -U
+      bind -n C-l select-pane -R
+
+      # Set vim-keys for resizing
+      bind -n M-Up resize-pane -U 5
+      bind -n M-Left resize-pane -L 5
+      bind -n M-Down resize-pane -D 5
+      bind -n M-Right resize-pane -R 5
+
+      # Rebind split keys
+      bind-key s split-window -v
+      bind-key v split-window -h
+
+      # Theme
+      set -g status-bg black
+      set -g status-fg white
+      '';
     };
     neovim = {
       enable = true;
