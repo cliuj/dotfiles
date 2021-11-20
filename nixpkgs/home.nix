@@ -78,6 +78,9 @@
 
         # Completion
         nvim-autopairs
+
+        # Misc
+        vim-rooter
       ];
       extraConfig = ''
       lua << EOF
@@ -101,6 +104,8 @@
           packadd cmp-vsnip
 
           packadd nvim-autopairs
+
+          packadd vim-rooter
           doautocmd BufRead
         ]])
         vim.defer_fn(function()
