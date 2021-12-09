@@ -10,7 +10,6 @@
       fd
       bat
       fzf
-      nodejs
       nnn
       sxiv
       mpv
@@ -19,6 +18,7 @@
       picom
       xmobar
       tmux
+      xwallpaper
 
       # LSP
       rnix-lsp
