@@ -29,7 +29,7 @@
       yaru-theme
     ];
     sessionVariables = {
-      EDITOR = "neovim";
+      EDITOR = "vim";
     };
     stateVersion = "21.05";
   };
