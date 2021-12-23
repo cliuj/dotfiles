@@ -26,6 +26,9 @@
       gopls
       haskell-language-server
 
+      # Misc
+      discord
+
       # Needed for arandr
       yaru-theme
     ];
