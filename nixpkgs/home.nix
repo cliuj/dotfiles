@@ -20,6 +20,7 @@
       xmobar
       tmux
       xwallpaper
+      nodejs
 
       # LSP
       rnix-lsp
@@ -117,14 +118,11 @@
         telescope-fzf-native-nvim
 
         # LSP
-        nvim-lspconfig
-        nvim-cmp
-        cmp-nvim-lsp
-        cmp-buffer
-        cmp-nvim-lua
-        vim-vsnip
-        vim-vsnip-integ
-        cmp-vsnip
+        coc-nvim
+        coc-go
+        coc-json
+        coc-pairs
+        coc-yaml
 
         # Completion
         nvim-autopairs
@@ -145,14 +143,11 @@
           packadd telescope-nvim
           packadd telescope-fzf-native-nvim
 
-          packadd nvim-lspconfig
-          packadd nvim-cmp
-          packadd cmp-nvim-lsp
-          packadd cmp-buffer
-          packadd cmp-nvim-lua
-          packadd vim-vsnip
-          packadd vim-vsnip-integ
-          packadd cmp-vsnip
+          packadd coc-nvim
+          packadd coc-go
+          packadd coc-json
+          packadd coc-pairs
+          packadd coc-yaml
 
           packadd nvim-autopairs
 
