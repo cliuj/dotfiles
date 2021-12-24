@@ -131,6 +131,7 @@
 
         # Misc
         vim-rooter
+        vim-floaterm
       ];
       extraConfig = ''
       lua << EOF
@@ -156,6 +157,7 @@
           packadd nvim-autopairs
 
           packadd vim-rooter
+          packadd vim-floaterm
           doautocmd BufRead
         ]])
         vim.defer_fn(function()

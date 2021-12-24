@@ -15,12 +15,16 @@ local map = vim.api.nvim_set_keymap
 
 local home = os.getenv("HOME")
 
+-- Map leader to space
+g.mapleader = ' '
+
 -- Load external plugins
 dofile(home .. "/.config/nvim/lua/nvim-tree.lua")
 dofile(home .. "/.config/nvim/lua/nvim-cmp.lua")
 dofile(home .. "/.config/nvim/lua/nvim-autopairs.lua")
 dofile(home .. "/.config/nvim/lua/lsp.lua")
 dofile(home .. "/.config/nvim/lua/telescope-nvim.lua")
+dofile(home .. "/.config/nvim/lua/floaterm.lua")
 
 -- Performance settings
 opt.lazyredraw = true
@@ -73,10 +77,13 @@ opt.splitright = true
 -- Mappings
 map('n', '<S-j>', '}', { noremap = true })
 map('n', '<S-k>', '{', { noremap = true })
-map('n', '<space>', '<C-W>', { noremap = true })
 map('n', ';', ':', { noremap = true })
-map('n', '<S-t>', ':sp | resize 20 | set nonumber | terminal <CR>', { noremap = true })
+for i = 1, 9 do
+  map('n', '<Leader>' .. i, i .. 'gt', { noremap = true })
+end
 map('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
+-- Explicitly map Space to C-W (leader) for pane switching
+map('n', '<space>', '<C-W>', { noremap = true })
 
 vim.cmd([[
   " Hotkey to check highlight groups
