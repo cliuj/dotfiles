@@ -5,11 +5,12 @@ g.floaterm_autoinsert = false
 g.floaterm_autohide = 1
 g.floaterm_shell = "fish"
 
-map('n', '<S-t>', ':FloatermNew<CR>', { noremap = true })
-map('n', '<Leader>t', ':FloatermToggle<CR>', { noremap = true })
-map('t', '<Leader>t', '<C-\\><C-n>:FloatermToggle<CR>', { noremap = true })
-map('n', 'tt', ':FloatermNext<CR>', { noremap = true })
-map('n', 'tT', ':FloatermPrev<CR>', { noremap = true })
+map('n', 'tt', ':FloatermToggle<CR>', { noremap = true })
+map('n', 'tn', ':FloatermNew<CR>', { noremap = true })
+map('n', 'th', ':FloatermHide<CR>', { noremap = true })
+map('n', 'ts', ':FloatermHide<CR>', { noremap = true })
+map('n', 't.', ':FloatermNext<CR>', { noremap = true })
+map('n', 't,', ':FloatermPrev<CR>', { noremap = true })
 map('n', 'tx', ':FloatermKill<CR>', { noremap = true })
 map('n', 'tX', ':FloatermKill!<CR>', { noremap = true })
 map('n', 't;', ':FloatermSend ', { noremap = true })
