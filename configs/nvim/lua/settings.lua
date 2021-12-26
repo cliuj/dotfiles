@@ -82,6 +82,8 @@ end
 map('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 -- Explicitly map Space to C-W (leader) for pane switching
 map('n', '<space>', '<C-W>', { noremap = true })
+-- Open a split below terminal
+map('n', '<S-t>', ':sp | resize 20 | set nonumber | terminal <CR>', { noremap = true })
 
 vim.cmd([[
   " Hotkey to check highlight groups
