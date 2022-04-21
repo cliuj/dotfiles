@@ -1,5 +1,19 @@
 { config, pkgs, ... }:
-
+let
+  tex = (pkgs.texlive.combine {
+    inherit (pkgs.texlive) scheme-basic
+    xetex
+    memoir
+    fontawesome5
+    geometry
+    anyfontsize
+    framed
+    titlesec
+    plex
+    enumitem
+    latexmk;
+  });
+in
 {
   nixpkgs.config.allowUnfree = true;
   home = {
@@ -21,6 +35,9 @@
       tmux
       xwallpaper
       nodejs
+      tex
+
+      zathura
 
       # LSP
       rnix-lsp
@@ -59,6 +76,7 @@
         home = "vim ~/.config/nixpkgs/home.nix";
         suslock = "slock systemctl suspend -i";
         lock = "slock";
+        devhs = "nix-shell --run fish -p ghc stack cabal-install";
       };
     };
    tmux = {
@@ -123,6 +141,7 @@
         coc-json
         coc-pairs
         coc-yaml
+        coc-vimtex
 
         # Completion
         nvim-autopairs
@@ -130,6 +149,8 @@
         # Misc
         vim-rooter
         vim-floaterm
+        markdown-preview-nvim
+        vimtex
       ];
       extraConfig = ''
       lua << EOF
@@ -148,11 +169,14 @@
           packadd coc-json
           packadd coc-pairs
           packadd coc-yaml
+          packadd coc-vimtex
 
           packadd nvim-autopairs
 
           packadd vim-rooter
           packadd vim-floaterm
+          packadd markdown-preview-nvim
+          packadd vimtex
           doautocmd BufRead
         ]])
         vim.defer_fn(function()

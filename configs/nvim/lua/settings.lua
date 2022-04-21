@@ -23,6 +23,7 @@ dofile(home .. "/.config/nvim/lua/nvim-tree.lua")
 dofile(home .. "/.config/nvim/lua/telescope-nvim.lua")
 dofile(home .. "/.config/nvim/lua/floaterm.lua")
 dofile(home .. "/.config/nvim/lua/coc.lua")
+dofile(home .. "/.config/nvim/lua/vimtex.lua")
 
 -- Performance settings
 opt.lazyredraw = true
