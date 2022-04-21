@@ -13,12 +13,17 @@ let
     enumitem
     latexmk;
   });
+  user = {
+    # Dynamically load the user.
+    name = builtins.getEnv "USER";
+    home = builtins.getEnv "HOME";
+  };
 in
 {
   nixpkgs.config.allowUnfree = true;
   home = {
-    username = "cliuj";
-    homeDirectory = "/home/cliuj";
+    username = user.name;
+    homeDirectory = user.home;
     packages = with pkgs; [
       arandr
       ripgrep
@@ -36,7 +41,6 @@ in
       xwallpaper
       nodejs
       tex
-
       zathura
 
       # LSP
