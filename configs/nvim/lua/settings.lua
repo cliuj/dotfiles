@@ -1,5 +1,9 @@
 vim.cmd([[
-  silent! colorscheme dark-meadow
+  try
+    colorscheme dark-meadow
+  catch
+    silent! colorscheme industry
+  endtry
 
   " Highlight colors for {} [] ()
   hi MatchParen cterm=NONE ctermfg=NONE ctermfg=000000
