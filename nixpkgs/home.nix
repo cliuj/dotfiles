@@ -142,6 +142,10 @@ in
       bind-key s split-window -v
       bind-key v split-window -h
 
+      # Set timeout for <esc> to 0 for
+      # nvim in tmux
+      set -sg escape-time 0
+
       # Theme
       set -g status-bg black
       set -g status-fg white
