@@ -1,7 +1,21 @@
 { config, pkgs, ... }:
 let
+  fonts = with pkgs; [
+    font-awesome
+    gohufont
+    ibm-plex
+    (nerdfonts.override {
+      fonts = [
+        "IBMPlexMono"
+        "DejaVuSansMono"
+        "Gohu"
+      ];
+    })
+  ];
+
   tex = (pkgs.texlive.combine {
-    inherit (pkgs.texlive) scheme-basic
+    inherit (pkgs.texlive)
+    scheme-basic
     xetex
     memoir
     fontawesome5
@@ -54,7 +68,9 @@ in
 
       # Needed for arandr
       yaru-theme
-    ];
+    ]
+    ++ fonts;
+
     sessionVariables = {
       EDITOR = "vim";
       # NOTE: Disable this for systems that can run OpenGL 3.3+.
