@@ -42,6 +42,7 @@ in
       nodejs
       tex
       zathura
+      kitty
 
       # LSP
       rnix-lsp
