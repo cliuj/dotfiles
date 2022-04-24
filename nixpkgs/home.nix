@@ -82,6 +82,17 @@ in
     stateVersion = "21.11";
   };
 
+  xdg = {
+    enable = true;
+    userDirs = {
+      desktop = "$HOME/desktop";
+      documents = "$HOME/documents";
+      download = "$HOME/downloads";
+      music = "$HOME/music";
+      pictures = "$HOME/pictures";
+    };
+  };
+
   programs = {
     fish = {
       enable = true;
