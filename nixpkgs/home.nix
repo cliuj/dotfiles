@@ -73,11 +73,6 @@ in
 
     sessionVariables = {
       EDITOR = "vim";
-      # NOTE: Disable this for systems that can run OpenGL 3.3+.
-      #       This was done to run programs that need OpenGL 2.0+,
-      #       but can't because the underlying system cannot support it,
-      #       i.e older hardware
-      LIBGL_ALWAYS_SOFTWARE = 1;
     };
     stateVersion = "21.11";
   };
