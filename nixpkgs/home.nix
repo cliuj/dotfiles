@@ -57,6 +57,9 @@ in
       tex
       zathura
       kitty
+      slock
+      clang
+      acpi
 
       # LSP
       rnix-lsp
