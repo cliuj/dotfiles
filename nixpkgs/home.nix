@@ -58,6 +58,7 @@ in
       zathura
       kitty
       slock
+      rofi
       clang
       acpi
 
@@ -97,6 +98,12 @@ in
   };
 
   programs = {
+    firefox = {
+      enable = true;
+    };
+    rofi = {
+      enable = true;
+    };
     fish = {
       enable = true;
       shellAbbrs = {
