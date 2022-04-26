@@ -42,25 +42,19 @@ in
       arandr
       ripgrep
       fd
-      bat
-      fzf
-      nnn
       sxiv
-      mpv
       youtube-dl
       maim
-      picom
       xmobar
-      tmux
       xwallpaper
       nodejs
       tex
       zathura
-      kitty
       slock
-      rofi
       clang
       acpi
+      kitty
+      htop
 
       # LSP
       rnix-lsp
@@ -102,6 +96,18 @@ in
       enable = true;
     };
     rofi = {
+      enable = true;
+    };
+    bat = {
+      enable = true;
+    };
+    fzf = {
+      enable = true;
+    };
+    nnn = {
+      enable = true;
+    };
+    mpv = {
       enable = true;
     };
     fish = {
@@ -245,6 +251,11 @@ in
         enable = true;
         enableContribAndExtras = true;
       };
+    };
+  };
+  services = {
+    picom = {
+      enable = true;
     };
   };
 }
