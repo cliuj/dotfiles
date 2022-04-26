@@ -85,14 +85,14 @@ in
     userDirs = {
       enable = true;
       createDirectories = true;
-      desktop = "$HOME/desktop";
-      documents = "$HOME/documents";
-      download = "$HOME/downloads";
-      music = "$HOME/music";
-      pictures = "$HOME/pictures";
-      publicShare = "$HOME/public";
-      templates = "$HOME/templates";
-      videos = "$HOME/videos";
+      desktop = "${config.home.homeDirectory}/desktop";
+      documents = "${config.home.homeDirectory}/documents";
+      download = "${config.home.homeDirectory}/downloads";
+      music = "${config.home.homeDirectory}/music";
+      pictures = "${config.home.homeDirectory}/pictures";
+      publicShare = "${config.home.homeDirectory}/public";
+      templates = "${config.home.homeDirectory}/templates";
+      videos = "${config.home.homeDirectory}/videos";
     };
   };
 
@@ -121,9 +121,9 @@ in
         hms = "home-manager switch";
         v = "nvim";
         xrr = "xmonad --recompile && xmonad --restart";
-        xbc = "vim ~/.config/xmobar/xmobarrc";
-        xmc = "vim ~/.xmonad/xmonad.hs";
-        nvc = "vim ~/.config/nvim/lua/settings.lua";
+        xmc = "vim ${config.home.homeDirectory}/.xmonad/xmonad.hs";
+        xbc = "vim ${config.xdg.configHome}/xmobar/xmobarrc";
+        nvc = "vim ${config.xdg.configHome}/nvim/lua/settings.lua";
         tl = "tmux list-sessions";
         ta = "tmux attach";
       };
@@ -131,19 +131,17 @@ in
         t = "tmux";
         vim = "nvim";
         vol = "alsamixer";
-        home = "vim ~/.config/nixpkgs/home.nix";
+        nnn = "nnn -e";
+        home = "vim ${config.xdg.configHome}/nixpkgs/home.nix";
         suslock = "slock systemctl suspend -i";
         lock = "slock";
-        devhs = "nix-shell --run fish -p ghc stack cabal-install";
       };
     };
    tmux = {
       enable = true;
       baseIndex = 1;
-      clock24 = true;
-      historyLimit = 5000;
+      historyLimit = 10000;
       keyMode = "vi";
-      newSession = true;
       shortcut = "space";
       extraConfig = ''
         # Set the prefix to Ctrl-Space
@@ -183,7 +181,7 @@ in
         bind-key l switch-client -n
 
         # Bind to R for quick config reload
-        bind-key r source-file "$HOME/.tmux.conf" \\\\; display-message "Reloaded!"
+        bind-key r 'source-file "${config.xdg.configHome}/tmux/tmux.conf" ; display-message "Reloaded ${config.xdg.configHome}/tmux/tmux.conf"'
 
         # Set timeout for <esc> to 0 for
         # nvim in tmux
@@ -227,7 +225,7 @@ in
       ];
       extraConfig = ''
       lua << EOF
-      local home = os.getenv("HOME")
+      local settings_lua = "${config.xdg.configHome}/nvim/lua/settings.lua"
       vim.defer_fn(function()
         vim.cmd ([[
           packadd vim-nix
@@ -253,7 +251,7 @@ in
           doautocmd BufRead
         ]])
         vim.defer_fn(function()
-          dofile(home .. "/.config/nvim/lua/settings.lua")
+          dofile(settings_lua)
         end, 15)
       end, 0)
       EOF
