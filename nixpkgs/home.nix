@@ -36,6 +36,12 @@ in
 {
   nixpkgs.config.allowUnfree = true;
   home = {
+    file = {
+      ".xinitrc".text = ''
+        picom -b
+        exec xmonad
+      '';
+    };
     username = user.name;
     homeDirectory = user.home;
     packages = with pkgs; [
