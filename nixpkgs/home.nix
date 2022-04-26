@@ -56,7 +56,6 @@ in
       nodejs
       tex
       zathura
-      slock
       clang
       acpi
       kitty
