@@ -87,6 +87,8 @@ in
 
     sessionVariables = {
       EDITOR = "vim";
+      SPLIT = "v"; # For nnn preview-tui
+
     };
     stateVersion = "21.11";
   };
@@ -122,6 +124,26 @@ in
     };
     nnn = {
       enable = true;
+      extraPackages = with pkgs; [
+        exa
+        tree
+        ueberzug
+      ];
+      plugins = {
+        mappings = {
+          c = "fzcd";
+          f = "finder";
+          v = "imgview";
+          p = "preview-tui";
+        };
+        src = (pkgs.fetchFromGitHub {
+          owner = "jarun";
+          repo = "nnn";
+          rev = "3f58f6111c95a38f2bfbdde92c42bf54edeb5927"; # v4.5
+          sha256 = "1jgc6ircamhr73sipcl8ckf3dwc264yx8qc2679k6sa6da0h0fmr";
+          fetchSubmodules = true;
+        }) + "/plugins";
+      };
     };
     mpv = {
       enable = true;
