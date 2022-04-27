@@ -1,5 +1,16 @@
 { config, pkgs, ... }:
 let
+  # Vim theme
+  vim-dark-meadow = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-dark-meadow";
+    src = pkgs.fetchFromGitHub {
+      owner = "cliuj";
+      repo = "vim-dark-meadow";
+      rev = "a37ab0d045e315521c94bd19255c4f4c2a7825fe";
+      sha256 = "1xlm8yshh6jp2kjkgyc0mkzbd3w9sylfpl132yyvdqy77ahsf5py";
+    };
+  };
+
   fonts = with pkgs; [
     font-awesome
     gohufont
@@ -197,6 +208,7 @@ in
       viAlias = true;
       vimAlias = true;
       plugins = with pkgs.vimPlugins; [
+        vim-dark-meadow
         vim-nix
 
         # UI
