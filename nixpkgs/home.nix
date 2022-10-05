@@ -112,8 +112,6 @@ in
           t = "tmux";
           vol = "alsamixer";
           home = "vim ${config.xdg.configHome}/nixpkgs/home.nix";
-          suslock = "slock systemctl suspend -i";
-          lock = "slock";
         };
       };
      tmux = {

@@ -18,6 +18,24 @@
     ];
   };
 
+  programs = {
+    fish = {
+      shellAliases = {
+        suslock = "betterlockscreen -s";
+        lock = "betterlockscreen -l";
+      };
+    };
+  };
+
+  services = {
+    picom = {
+      enable = true;
+    };
+    betterlockscreen = {
+      enable = true;
+    };
+  };
+
   xsession = {
     windowManager = {
       xmonad = {
@@ -27,9 +45,4 @@
     };
   };
 
-  services = {
-    picom = {
-      enable = true;
-    };
-  };
 }
