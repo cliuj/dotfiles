@@ -52,9 +52,9 @@ opt.guicursor = "i:block"
 opt.undofile = true
 
 -- Indentation
-opt.expandtab = true
-opt.smarttab = true
-opt.autoindent = true
+opt_local.expandtab = true
+opt_local.smarttab = true
+opt_local.autoindent = true
 
 -- Backspace Indentation
 opt.backspace = {"indent", "eol", "start"}
