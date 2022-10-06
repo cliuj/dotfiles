@@ -46,7 +46,7 @@ in
       packages = with pkgs; [
         ripgrep
         fd
-        sxiv
+        nsxiv
         youtube-dl
         maim
         nodejs
@@ -110,6 +110,7 @@ in
         shellAliases = {
           vol = "alsamixer";
           home = "vim ${config.xdg.configHome}/nixpkgs/home.nix";
+          sxiv = "nsxiv";
         };
       };
       home-manager.enable = true;
