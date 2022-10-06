@@ -39,8 +39,12 @@
       # Rounded corners sometimes interferes with the WM's border, thus
       # opacity is used as an indicator for focused window instead of
       # border
-      inactiveOpacity = "0.93";
+      inactiveOpacity = "0.90";
       extraOptions = ''
+        opacity-rule = [
+          "100:class_g = 'i3lock'",
+          "100:role = 'browser'"
+        ];
         corner-radius = 20;
         rounded-corners-exclude = [
           "class_g = 'xmobar'",
