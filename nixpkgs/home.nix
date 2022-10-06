@@ -1,14 +1,19 @@
 { config, pkgs, ... }:
 let
   fonts = with pkgs; [
+    # NOTE: run `fc-cache -f` once finished switching
+    #       since it isn't done automatically
     font-awesome
     gohufont
     ibm-plex
+    ubuntu_font_family
     (nerdfonts.override {
       fonts = [
         "IBMPlexMono"
         "DejaVuSansMono"
         "Gohu"
+        "UbuntuMono"
+        "Ubuntu"
       ];
     })
   ];
