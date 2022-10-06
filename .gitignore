@@ -3,3 +3,5 @@
 **/themes
 
 **/nixos/result
+**/xmonad
+!xmonad.hs

@@ -102,9 +102,6 @@ in
         enable = true;
         shellAbbrs = {
           hms = "home-manager switch";
-          xrr = "xmonad --recompile && xmonad --restart";
-          xmc = "vim ${config.home.homeDirectory}/.xmonad/xmonad.hs";
-          xbc = "vim ${config.xdg.configHome}/xmobar/xmobarrc";
           nvc = "vim ${config.xdg.configHome}/nvim/lua/settings.lua";
         };
         shellAliases = {

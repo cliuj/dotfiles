@@ -49,7 +49,10 @@ myModMask :: KeyMask
 myModMask = mod1Mask
 
 myBorderWidth :: Dimension
-myBorderWidth = 2
+myBorderWidth = 0
+
+myNormalBorderColor = "#71376A"
+myFocusedBorderColor = "#71376A"
 
 -----------------------------------------------------------
 -- Keybindings
@@ -103,7 +106,7 @@ myKeys =
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border 0 i 0 i) True (Border i 0 i 0) True
 
-myLayoutHook = avoidStruts $ mySpacing 25 $
+myLayoutHook = avoidStruts $ mySpacing 50 $
              layoutHook def
                 where 
                     tall = Tall 1 (3/100) (1/2)
@@ -136,6 +139,8 @@ main = do
           focusFollowsMouse  = myFocusFollowsMouse,
           modMask = myModMask,
           borderWidth = myBorderWidth,
+          focusedBorderColor = myFocusedBorderColor,
+          normalBorderColor = myNormalBorderColor,
           layoutHook = myLayoutHook,
           logHook =  myLogHook xmobarProc0
         } `additionalKeysP` myKeys
