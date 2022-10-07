@@ -100,6 +100,9 @@ in
       fzf = {
         enable = true;
       };
+      lf = {
+        enable = true;
+      };
       mpv = {
         enable = true;
       };
