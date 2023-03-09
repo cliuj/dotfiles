@@ -2,27 +2,46 @@ ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 XDG_CONFIG_HOME="$(HOME)/.config"
 
-all: dirs links install switch
+.PHONY: all install configs pkgs
 
-dirs:
-	mkdir -p "$(ROOT_DIR)/.xmonad"
+install: install-yay
 
-links:
-	ln -sf "$(ROOT_DIR)/configs/nvim" "$(XDG_CONFIG_HOME)"
-	ln -sf "$(ROOT_DIR)/configs/xmobar" "$(XDG_CONFIG_HOME)"
-	ln -sf "$(ROOT_DIR)/configs/kitty" "$(XDG_CONFIG_HOME)"
-	ln -sf "$(ROOT_DIR)/nixpkgs" "$(XDG_CONFIG_HOME)"
-	ln -sf "$(ROOT_DIR)/xmonad" "$(HOME)/.xmonad"
+install-yay:
+	echo "Installing AUR helper: `yay` via local compile"
+	sudo pacman -S --needed git base-devel \
+	&& mkdir ~/aur \
+	&& cd ~/aur \
+	&& git clone https://aur.archlinux.org/yay.git \
+	|| true \
+	&& cd yay \
+	&& makepkg -sri
 
-install:
-	nix-shell '<home-manager> -A install'
+pkgs: pkgs-pacman pkgs-yay
 
-switch:
-	home-manager switch
+pkgs-pacman:
+	echo "Installing packages listed in *.pacman files via pacman"
+	cd pkglists \
+	&& cat *.pacman \
+	| sudo pacman -S -
 
-clean:
-	rm -f "$(XDG_CONFIG_HOME)/nvim"
-	rm -f "$(XDG_CONFIG_HOME)/xmobar"
-	rm -f "$(XDG_CONFIG_HOME)/kitty"
-	rm -f "$(XDG_CONFIG_HOME)/nixpkgs"
-	rm -f "$(HOME)/.xmonad"
+pkgs-yay:
+	echo "Installing AUR packages listed in *.yay files via yay"
+	cd pkglists \
+	&& cat *.yay \
+	| yay -S -
+
+configs: config-vendir config-xdg config-x
+
+config-vendir:
+	echo "Retrieving configs via vendir"
+	vendir sync -f "$(ROOT_DIR)/vendir.yml" --chdir "$(HOME)"
+
+config-xdg:
+	echo "Linking user-dirs.dirs"
+	ln -sf "$(ROOT_DIR)/user-dirs.dirs" "$(XDG_CONFIG_HOME)"
+
+config-x:
+	echo "Linking .xinitrc"
+	ln -sf "$(ROOT_DIR)/.xinitrc" ~/.xinitrc
+
+all: install pkgs configs

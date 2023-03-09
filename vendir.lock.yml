@@ -1,0 +1,13 @@
+apiVersion: vendir.k14s.io/v1alpha1
+directories:
+- contents:
+  - git:
+      commitTitle: 'init(all): First commit'
+      sha: 6a99db7d797ba4cfb898e87c5800b15171438b9f
+    path: alacritty
+  - git:
+      commitTitle: 'init(all): First commit'
+      sha: 5470b6acd85287a9a4580c2e4fbe50b52ef55f20
+    path: nvim
+  path: .config
+kind: LockConfig

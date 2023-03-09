@@ -1,0 +1,6 @@
+cabal-install
+npm
+yarn
+pyright
+python-pip
+luarocks
