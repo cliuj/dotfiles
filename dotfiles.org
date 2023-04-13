@@ -1,0 +1,152 @@
+#+title: dotfiles
+#+author: cliuj
+* Install
+For quick setup, installation is done via ~make~ targets.
+*** make options
+**** all
+Installs and sets up everything via running *all* the ~make~ targets
+#+begin_comment
+*NOTE*: This is meant to be used on a freshly setup **Arch** system as
+        some steps (like ~git clone~) may fail if the target directory already exists
+#+end_comment
+
+#+begin_src sh
+  make all
+#+end_src
+
+**** install
+Installs miscellaneous packages that aren't installed through a package manager.
+#+begin_src sh
+  make install
+#+end_src
+
+**** pkgs
+Installs only the packages listed in ~pkglist/~ files.
+#+begin_src sh
+  make pkgs
+#+end_src
+
+**** configs
+Setups miscellaneous config files located in this repo.
+#+begin_src sh
+  make configs
+#+end_src
+
+* Packages
+** ~pkglists/~ directory
+Contains the generated (tangled) files from this section.
+*** pacman
+**** Install
+#+begin_src sh
+  cat *.pacman | pacman -S -
+#+end_src
+**** Files
+***** audio.pacman
+:PROPERTIES:
+:header-args: :text :tangle ./pkglists/audio.pacman
+:END:
+#+begin_src text
+pavucontrol
+pulseaudio
+pulseaudio-alsa
+#+end_src
+***** dev.pacman
+:PROPERTIES:
+:header-args: :text :tangle ./pkglists/dev.pacman
+:END:
+#+begin_src text
+cabal-install
+npm
+yarn
+pyright
+python-pip
+luarocks
+#+end_src
+***** fonts.pacman
+:PROPERTIES:
+:header-args: :text :tangle ./pkglists/fonts.pacman
+:END:
+#+begin_src text
+ttf-ibmplex-mono-nerd
+ttf-ubuntu-mono-nerd
+ttf-dejavu-nerd
+otf-font-awesome
+adobe-source-han-sans-jp-fonts
+adobe-source-han-serif-jp-fonts
+adobe-source-han-sans-cn-fonts
+adobe-source-han-serif-cn-fonts
+#+end_src
+***** tools.pacman
+:PROPERTIES:
+:header-args: :text :tangle ./pkglists/tools.pacman
+:END:
+#+begin_src text
+bat
+clang
+cmake
+docker
+docker-buildx
+fd
+fish
+git
+htop
+make
+neovim
+openssh
+polkit
+ripgrep
+sudo
+tmux
+wget
+which
+xsel
+#+end_src
+***** ui.pacman
+:PROPERTIES:
+:header-args: :text :tangle ./pkglists/ui.pacman
+:END:
+#+begin_src text
+arandr
+alacritty
+firefox
+maim
+qemu-desktop
+picom
+rofi
+thunar
+xmonad
+xmonad-contrib
+xorg
+xorg-xinit
+zathura
+#+end_src
+
+*** yay
+**** Install
+#+begin_src sh
+  cat *.yay | yay -S -
+#+end_src
+**** Files
+***** dev.yay
+:PROPERTIES:
+:header-args: :text :tangle ./pkglists/dev.yay
+:END:
+#+begin_src text
+ghcup-hs-bin
+#+end_src
+***** tools.yay
+:PROPERTIES:
+:header-args: :text :tangle ./pkglists/tools.yay
+:END:
+#+begin_src text
+carvel-tools
+#+end_src
+***** ui.yay
+:PROPERTIES:
+:header-args: :text :tangle ./pkglists/ui.yay
+:END:
+#+begin_src text
+betterlockscreen
+eww
+nsxiv
+#+end_src
