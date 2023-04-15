@@ -43,7 +43,7 @@ Contains the generated (tangled) files from this section.
 **** Files
 ***** audio.pacman
 :PROPERTIES:
-:header-args: :text :tangle ./pkglists/audio.pacman
+:header-args: :text :tangle ./pkglists/audio.pacman :mkdirp yes
 :END:
 #+begin_src text
 pavucontrol
@@ -52,7 +52,7 @@ pulseaudio-alsa
 #+end_src
 ***** dev.pacman
 :PROPERTIES:
-:header-args: :text :tangle ./pkglists/dev.pacman
+:header-args: :text :tangle ./pkglists/dev.pacman :mkdirp yes
 :END:
 #+begin_src text
 cabal-install
@@ -64,7 +64,7 @@ luarocks
 #+end_src
 ***** fonts.pacman
 :PROPERTIES:
-:header-args: :text :tangle ./pkglists/fonts.pacman
+:header-args: :text :tangle ./pkglists/fonts.pacman :mkdirp yes
 :END:
 #+begin_src text
 ttf-ibmplex-mono-nerd
@@ -78,7 +78,7 @@ adobe-source-han-serif-cn-fonts
 #+end_src
 ***** tools.pacman
 :PROPERTIES:
-:header-args: :text :tangle ./pkglists/tools.pacman
+:header-args: :text :tangle ./pkglists/tools.pacman :mkdirp yes
 :END:
 #+begin_src text
 bat
@@ -103,7 +103,7 @@ xsel
 #+end_src
 ***** ui.pacman
 :PROPERTIES:
-:header-args: :text :tangle ./pkglists/ui.pacman
+:header-args: :text :tangle ./pkglists/ui.pacman :mkdirp yes
 :END:
 #+begin_src text
 arandr
@@ -129,21 +129,21 @@ zathura
 **** Files
 ***** dev.yay
 :PROPERTIES:
-:header-args: :text :tangle ./pkglists/dev.yay
+:header-args: :text :tangle ./pkglists/dev.yay :mkdirp yes
 :END:
 #+begin_src text
 ghcup-hs-bin
 #+end_src
 ***** tools.yay
 :PROPERTIES:
-:header-args: :text :tangle ./pkglists/tools.yay
+:header-args: :text :tangle ./pkglists/tools.yay :mkdirp yes
 :END:
 #+begin_src text
 carvel-tools
 #+end_src
 ***** ui.yay
 :PROPERTIES:
-:header-args: :text :tangle ./pkglists/ui.yay
+:header-args: :text :tangle ./pkglists/ui.yay :mkdirp yes
 :END:
 #+begin_src text
 betterlockscreen
