@@ -1,0 +1,10 @@
+[Unit]
+Description=Quickshell lock screen
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/qs -p %h/.config/quickshell-lock
+Restart=on-failure

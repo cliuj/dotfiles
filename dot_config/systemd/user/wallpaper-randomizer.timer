@@ -1,0 +1,9 @@
+[Unit]
+Description=Change the wallpaper every 2 hours
+
+[Timer]
+OnCalendar=*-*-* 00/2:00:00
+Persistent=true
+
+[Install]
+WantedBy=graphical-session.target

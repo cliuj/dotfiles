@@ -1,0 +1,9 @@
+**/CLAUDE*.md
+**/.claude
+**/.claude/**
+.config/*/.git
+.config/*/.git/**
+.config/*/docs
+.config/*/docs/**
+.config/quickshell*/.qmlls.ini
+**/Session.vim

@@ -1,0 +1,14 @@
+[Unit]
+Description=yin wallpaper daemon
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStartPre=/usr/bin/rm -f /tmp/yin
+ExecStart=/usr/bin/yin
+ExecStartPost=-/bin/sh -c 'until [ -S /tmp/yin ]; do sleep 0.1; done; %h/.local/bin/wallpaper_randomizer'
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

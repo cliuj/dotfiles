@@ -1,0 +1,23 @@
+[config.custom_colors]
+red     = { color = "#ff0000", blend = true }
+green   = { color = "#00ff00", blend = true }
+yellow  = { color = "#ffff00", blend = true }
+blue    = { color = "#0000ff", blend = true }
+magenta = { color = "#ff00ff", blend = true }
+cyan    = { color = "#00ffff", blend = true }
+orange  = { color = "#ff8000", blend = true }
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/.config/kitty/colors.conf'
+post_hook = 'pkill -SIGUSR1 kitty'
+
+[templates.fish]
+input_path = '~/.config/matugen/templates/fish-colors.fish'
+output_path = '~/.config/fish/conf.d/matugen.fish'
+post_hook = 'fish -c "set -U __matugen_reload (date +%s%N)"'
+
+[templates.neovim]
+input_path = "~/.config/matugen/templates/nvim-colors.json"
+output_path = "~/.cache/matugen/nvim-colors.json"
+post_hook = "pkill -SIGUSR1 nvim"

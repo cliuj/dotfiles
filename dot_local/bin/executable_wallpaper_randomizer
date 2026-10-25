@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -e
+
+QUEUE_PATH="$HOME/.cache/wallpaper-queue"
+
+# Collect all the files that can be used for wallpapers (live or not).
+shopt -s nullglob
+files=(
+    ~/Pictures/live\ wallpapers/*.mp4
+    ~/Pictures/wallpapers/*.jpg
+)
+
+# Check if the queue is empty or not. If it is empty, then populate it with a
+# shuffled list of wallpaper files.
+[ -s "$QUEUE_PATH" ] || printf '%s\n' "${files[@]}" | shuf >"$QUEUE_PATH"
+
+# Pop the queue and set the wallpaper based on the file.
+next_file="$(head -n 1 "$QUEUE_PATH")"
+matugen_image_source="${next_file}"
+sed -i '1d' "$QUEUE_PATH"
+
+ext="${next_file##*.}"
+
+echo "Setting wallpaper to: ${next_file}"
+# If the next file is a live wallpaper, then we need to first extract out a
+# frame to pass to matugen if it hasn't already been done before.
+if [ "${ext}" = 'mp4' ]; then
+    # If there isn't a frame image for a live wallpaper, then generate one before continuing.
+    extract_frames_path="$HOME/.cache/extracted_frames"
+    extract_frame_from_live_wallpapers "${extract_frames_path}"
+    # Retrieve the frame image for matugen.
+    name="${next_file##*/}"
+    name="${name%.*}"
+    # matugen will use the frame image as source of generating the color palatte.
+    matugen_image_source="${extract_frames_path}/${name}.png"
+fi
+
+# Set the (live) wallpaper with 'yin'.
+yinctl --img "${next_file}"
+
+# Set the color via matugen. The configuration for matugen already creates the
+# relevant files via templates.
+matugen image "${matugen_image_source}" --source-color-index 0 -m dark

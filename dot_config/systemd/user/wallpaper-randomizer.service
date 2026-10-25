@@ -1,0 +1,10 @@
+[Unit]
+Description=Change the wallpaper and colorscheme
+After=yin.service
+Wants=yin.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/wallpaper_randomizer
+Restart=on-failure
+RestartSec=10
